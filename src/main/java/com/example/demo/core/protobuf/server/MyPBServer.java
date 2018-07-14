@@ -1,5 +1,6 @@
-package com.example.demo.core.heartbeat;
+package com.example.demo.core.protobuf.server;
 
+import com.example.demo.core.socket.server.MyServerInitializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
@@ -8,11 +9,12 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
  * @author 侯存路
- * @date 2018/7/12
+ * @date 2018/7/10
  * @company codingApi
  * @description
  */
-public class MyHearServer {
+public class MyPBServer {
+
 
 
     public static void main(String[] args) throws InterruptedException {
@@ -21,7 +23,7 @@ public class MyHearServer {
 
         try {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
-            serverBootstrap.group(boosGroup , workerGroup).channel(NioServerSocketChannel.class).childHandler(new MyHearServerInitializer());
+            serverBootstrap.group(boosGroup , workerGroup).channel(NioServerSocketChannel.class).childHandler(new MyPBServerInitializer());
 
             ChannelFuture channelFuture = serverBootstrap.bind(8899).sync();
             channelFuture.channel().closeFuture().sync();
@@ -29,6 +31,9 @@ public class MyHearServer {
             boosGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }
+
+
+
     }
 
 }

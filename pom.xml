@@ -25,6 +25,8 @@
 	</properties>
 
 	<dependencies>
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -58,6 +60,14 @@
 			<artifactId>protobuf-java-util</artifactId>
 			<version>3.5.1</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.thrift/libthrift -->
+		<dependency>
+			<groupId>org.apache.thrift</groupId>
+			<artifactId>libthrift</artifactId>
+			<version>0.11.0</version>
+		</dependency>
+
 
 
 	</dependencies>

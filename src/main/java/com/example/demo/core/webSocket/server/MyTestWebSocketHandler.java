@@ -2,7 +2,6 @@ package com.example.demo.core.webSocket.server;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 
 /**
@@ -14,6 +13,10 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 public class MyTestWebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
 
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("连接活动》》》");
+    }
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
@@ -31,5 +34,12 @@ public class MyTestWebSocketHandler extends SimpleChannelInboundHandler<TextWebS
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         System.out.println("有人下线" + ctx.channel().id().asLongText());
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        System.out.println("异常" + ctx.channel().id().asLongText());
+        cause.printStackTrace();
+        ctx.close();
     }
 }

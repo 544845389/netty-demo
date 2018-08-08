@@ -26,7 +26,7 @@ public class MyWebSocketInitializer extends ChannelInitializer<SocketChannel> {
         channelPipeline.addLast(new HttpServerCodec());
         channelPipeline.addLast(new ChunkedWriteHandler());
         channelPipeline.addLast(new HttpObjectAggregator(8192));
-        channelPipeline.addLast(new WebSocketServerProtocolHandler("/ws"));
+        channelPipeline.addLast(new WebSocketServerProtocolHandler("/"));
 
         channelPipeline.addLast(new MyTestWebSocketHandler());
     }

@@ -6,9 +6,48 @@ option java_package="com.example.demo.core.protobuf";
 option java_outer_classname="DateInfo";
 
 
+message Students{
+
+    enum DateType{
+        Student = 1;
+        Student2 = 2;
+        Student3 = 3;
+    }
+
+
+    required DateType date_type = 1;
+
+    oneof dataBody{
+        Student student = 2;
+        Student1 student1 = 3;
+        Student2 student2 = 4;
+    }
+
+}
+
+
+
 message Student{
 
-    required string name = 1;
+    optional string name = 1;
+    optional int32 age = 2;
+    optional string address = 3 ;
+
+}
+
+
+message Student1{
+
+    optional string name = 1;
+    optional int32 age = 2;
+    optional string address = 3 ;
+
+}
+
+
+message Student2{
+
+    optional string name = 1;
     optional int32 age = 2;
     optional string address = 3 ;
 

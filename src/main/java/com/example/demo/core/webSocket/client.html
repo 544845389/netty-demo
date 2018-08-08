@@ -9,7 +9,7 @@
 <script type="text/javascript">
     var socket;
     if(window.WebSocket){
-        socket = new WebSocket("ws://127.0.0.1:8899/ws");
+        socket = new WebSocket("ws://127.0.0.1:8899/");
 
         socket.onmessage = function (event) {
             var ta = document.getElementById("res");
